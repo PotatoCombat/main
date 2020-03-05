@@ -18,56 +18,81 @@ ifdef::env-github[]
 endif::[]
 :repoURL: https://github.com/se-edu/addressbook-level3
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `Team W17-4`      Since: `Jan 2010`      Licence: `MIT`
 
 == Introduction
 
-AddressBook Level 3 (AB3) is for those who *prefer to use a desktop app for managing contacts*. More importantly, AB3 is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <<Quick Start>> to get started. Enjoy!
+TA-Tracker is a productivity tool made for NUS Computing Teaching Assistants (TAs)
+who want to be able to track and manage all of their claimable hours in NUS.
+Interested? Jump to the <<Quick Start>> to get started!
 
 == Quick Start
 
 .  Ensure you have Java `11` or above installed in your Computer.
-.  Download the latest `addressbook.jar` link:{repoURL}/releases[here].
-.  Copy the file to the folder you want to use as the home folder for your Address Book.
+.  Download the latest `tatracker.jar` link:{repoURL}/releases[here].
+.  Copy the file to the folder you want to use as the home folder for your TA tracker.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
 image::Ui.png[width="790"]
 +
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
-.  Some example commands you can try:
 
-* *`list`* : lists all contacts
-* **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named `John Doe` to the Address Book.
-* **`delete`**`3` : deletes the 3rd contact shown in the current list
-* *`exit`* : exits the app
+.  Refer to <<Usage>> for details of each command.
 
-.  Refer to <<Features>> for details of each command.
+[[Layout]]
+== Layout
 
-== Placeholder
+=== Dashboard
+Home page.
 
-[[Features]]
-== Features
+=== Student View
+This view will show you the list of all your students. It will show you information such as student name, matriculation number, attendance, ratings you give the student(such as for participation), any notes you have on the student and contact details (email and telegram id).
+
+=== Session View
+This view will contain the upcoming tasks and statistics.
+
+=== TSS View
+This will show you all your claimable hours up till now in the same format as that used in the TSS claim files.
+
+=== Automatic Backups
+TATracker data is automatically saved in the hard disk as backup files after any command that changes the data. These automatic backups will preserve all data and settings within the program at the time of use. These backups will also be automatically loaded into the program when it is opened.
+
+[[Usage]]
+== Usage
 
 ====
-*Command Format*
+*Common Parameters*
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* Items in square brackets are optional e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-* Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-* Parameters can be in any order e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
-* An arrow `->` indicates that the command has more parameters than specified. These missing parameters will stated in a later section of the guide.
-* A blank parameter separator `./` indicates the presence of a tag that will be specified in a later section of the guide.
-* `SESSION_CODE` replace with a unique code for a specific type of session.
+* `PAGE_NAME` - one of the following pages:
+** home - Dashboard: the default view you first see when you open the GUI
+** session - Sessions: list of sessions according to date
+** students - Students: list of students you are teaching
+** tss - TSS Form: list of claimable sessions (only sessions that have been marked as done
+* `CATEGORY_UID` - a category unique id
+* `MATRIC_NUMBER` - the matriculation number of a student
+** Must start with an ‘A’
+** Must end with an letter
+** Must have x numbers in between the start and end letter
+* `MOD_CODE` - replace with the unique code for the module
+* `CLASS_CODE` - replace with the unique code for the tutorial/class
+* `SESSION_UID` - the unique numeric identifier of a session
+** Must be a positive integer (eg. 1, 2, 3, ...)
+* `SESSION_TYPE` - replace with one of the following:
+** consult - Consultations
+** tutorial - Tutorials
+** grading - Grading and assessments
+** prep - Class preparation
+** todo - other tasks and notes
+** lab - Lab
+* `START`, `END` - a time parameter, in the following format: HH:mm
+* `DATE` - a date parameter, in the following format: dd-MM-yyyy
+* `->` - indicates that the command has more parameters than specified.
+These missing parameters will be stated in a later section of the guide.
+* `./` - indicates the presence of a tag that will be specified in
+a later section of the guide.
 ====
 
-[[Navigation]]
-=== Navigation
-
-[[ViewOrganization]]
-=== View Organization
-
-[[DataManagement]]
 === Data Management
 
 ==== Adding data: `add`
@@ -133,9 +158,9 @@ Adds the CS2103T module group.
 [[AddSessionType]]
 ===== Adding a type of session: `add c/SESSION_TYPE`
 Adds a new type of session for an existing module group in the program.
-The `CATEGORY_UID` for this command is the SESSION_CODE code.
+The `CATEGORY_UID` for this command is the SESSION_UID code.
 
-Format: `add c/SESSION_TYPE t/SESSION_CODE m/MOD_CODE`
+Format: `add c/SESSION_TYPE t/SESSION_UID m/MOD_CODE`
 
 [NOTE]
 ====
@@ -334,113 +359,110 @@ Examples:
 * `edit c/session i/7 d/20-02-2020`
 Edits the date of a session with uid 7 to 20 Feb 2020.
 
+=== Student Management
 
+==== Enrolling a student in a class : `enroll`
 
+Enrolls a student in a class in the program. +
 
-=== Viewing help : `help`
-
-Format: `help`
-
-=== Adding a person: `add`
-
-Adds a person to the address book +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
-
-[TIP]
-A person can have any number of tags (including 0)
-
-Examples:
-
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
-
-=== Listing all persons : `list`
-
-Shows a list of all persons in the address book. +
-Format: `list`
-
-=== Editing a person : `edit`
-
-Edits an existing person in the address book. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
+Format: `enroll MATRIC_NUMBER CLASS_CODE MOD_CODE`
 
 ****
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index *must be a positive integer* 1, 2, 3, ...
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person's tags by typing `t/` without specifying any tags after it.
+* Enrolls the student with the given matriculation number in the specified class.
+* The class should belong to the module with the given MOD_CODE.
+* The class should already exist in the TA-Tracker with the given CLASS_CODE.
 ****
 
 Examples:
 
-* `edit 1 p/91234567 e/johndoe@example.com` +
-Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-* `edit 2 n/Betsy Crower t/` +
-Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+* `enroll A01234567J G06 CS2101` +
+Enrolls the student with the matriculation number A01234567J in tutorial G06 of module CS2101.
 
-=== Locating persons by name: `find`
+==== Removing a student from a class : `kick`
 
-Finds persons whose names contain any of the given keywords. +
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Removes a student from a class in the program.
+
+Format: `kick MATRIC_NUMBER CLASS_CODE MOD_CODE`
 
 ****
-* The search is case insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Removes the student with the given matriculation number from the specified class.
+* The class should belong to the module with the given MOD_CODE.
+* The class should already exist in the TA-Tracker with the given CLASS_CODE.
 ****
 
 Examples:
 
-* `find John` +
-Returns `john` and `John Doe`
-* `find Betsy Tim John` +
-Returns any person having names `Betsy`, `Tim`, or `John`
+* `kick A01234567J G06 CS2101` +
+Removes the student with the matriculation number A01234567J from tutorial G06 of module CS2101.
 
-// tag::delete[]
-=== Deleting a person : `delete`
+=== Session Management
 
-Deletes the specified person from the address book. +
-Format: `delete INDEX`
+==== Labelling a session as completed : `done`
+
+Labels a session as done.
+If the session is claimable, it will appear as a new claim in the TSS view.
+
+Format: `done SESSION_UID`
 
 ****
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index *must be a positive integer* 1, 2, 3, ...
+* Marks the session with the given unique session identifier as done.
 ****
 
 Examples:
 
-* `list` +
-`delete 2` +
-Deletes the 2nd person in the address book.
-* `find Betsy` +
-`delete 1` +
-Deletes the 1st person in the results of the `find` command.
+* `done 25` +
+Marks the session with the unique session id of 25 as done.
 
-// end::delete[]
-=== Clearing all entries : `clear`
+==== Labeling a session as a makeup : `makeup`
 
-Clears all entries from the address book. +
-Format: `clear`
+Labels a session as a makeup session.
+If the session is claimable, it will appear as a new claim in the TSS view.
 
-=== Exiting the program : `exit`
+Format: `makeup SESSION_UID`
 
-Exits the program. +
-Format: `exit`
+****
+* Marks the session with the given unique session identifier as a makeup.
+****
 
-=== Saving the data
+Examples:
 
-Address book data are saved in the hard disk automatically after any command that changes the data. +
-There is no need to save manually.
+* `makeup 25` +
+Marks the session with the unique session id of 25 as a makeup.
 
-// tag::dataencryption[]
-=== Encrypting data files `[coming in v2.0]`
+=== Settings
 
-_{explain how the user can enable/disable data encryption}_
-// end::dataencryption[]
+==== Adjusting the settings : `set`
+
+Adjusts the chosen settings.
+
+Format: `set SETTING`
+
+Here are the things that you can set:
+
+*rate:* Adjusts the hourly rate. +
+Sets the hourly rate for the total income and claim computation.
+
+Format: `set rate AMOUNT`
+****
+* AMOUNT is the amount you want to change the hourly rate to.
+* To specify in exact dollars, you can write it as just the number (example: 20).
+* To specify in exact dollars and cents, write it as a decimal up to 2 decimal places (example: 20.05).
+****
+
+Examples:
+
+* `set rate 25` +
+Sets the current hourly rate to 25$.
+
+*default:* Adjusts the default layout +
+Change the default view shown when the GUI is first opened.
+
+Format: `set default PAGE_NAME`
+
+Examples:
+
+* `set default sessions` +
+Sets the default view to be the list of sessions every time you open the GUI.
 
 == FAQ
 
@@ -449,7 +471,7 @@ _{explain how the user can enable/disable data encryption}_
 
 == Command Summary
 
-* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
+* *Add* : `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
 e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
 * *Clear* : `clear`
 * *Delete* : `delete INDEX` +

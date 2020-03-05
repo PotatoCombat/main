@@ -297,22 +297,366 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |Priority |As a ... |I want to ... |So that I can...
 |`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
 
-|`* * *` |user |add a new person |
+|`* * *` |TA |see an overview of events in a week |know what I have that week in a glance
 
-|`* * *` |user |delete a person |remove entries that I no longer need
+|`* *` |TA |give students ratings |keep a track of student participation in class
 
-|`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
+|`* *` |TA |delete tasks and events |remove cancelled tasks and events from my session tracker
 
-|`* *` |user |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone else seeing them by accident
+|`*` |TA |get a message when a new task clashes with an old one |prevent clashes in my schedule
 
-|`*` |user with many persons in the address book |sort persons by name |locate a person easily
+|`* * *` |TA |store and retrieve details of my students |I can get details relating to students whenever necessary
+
+|`* *` |TA |be able to get tasks on a particular date |
+
+|`* *` |TA |filter by a module |see events relating to a particular module clearly
+
+|`*` |TA |state that a task is recurring |prevent the need to put a recurring task in my schedule each week
+
+|`* * *` |TA |see all my claimable hours in the TSS format |type my claims easily at the end of the semester
+
+|`* * *` |TA |set my hourly rate |get the value of my estimated pay according to the latest rate of the semester
+
+|`* *` |TA |get information on how many hours I've worked so far |keep track of how much work I've done
+
+|`* * *` |user |change between the different pages |view the information on the different pages
+
+|`* * *` |TA |add students to a particular module |
+
+|`* *` |TA |store my students' email ids |retrieve their email ids when I need to contact them
+
+|`* * *` |TA |add multiple modules |keep track of the different modules I am a TA for
+
+|`* * *` |TA |add a tutorial/lab group |keep track of the different tutorial and lab groups I conduct
+
+|`* *` |TA |delete a tutorial group |remove tasks relating to a tutorial group I am no longer the TA of
+
+|`* *` |TA |delete a module |remove tasks relating to a module I am no longer the TA of
+
+|`* * *` |TA |edit student details |
+
+|`* * *` |TA |remove students from a tutorial or lab group |no longer have details of students that are no longer in my tutorial/lab group
+
+|`* * *` |TA |mark a session as done |automatically get filled in my TSS claim section.
+
+|`* *` |TA |give students ratings |keep a track of student participation in class
+
+|`* *` |TA |delete tasks and events |remove cancelled tasks and events from my session tracker
+
+|`* * *` |TA |schedule consultation sessions with my students |keep track of claimable hours spent in consultations
+
+|`*` |TA |get a message when a new task clashes with an old one |prevent clashes in my schedule
+
+|`* * *` |TA |store and retrieve details of my students |I can get details relating to students whenever necessary
+
+|`* *` |TA |be able to get tasks on a particular date |
+
+|`* *` |TA |filter by a module |see events relating to a particular module clearly
+
+|`*` |TA |state that a task is recurring |prevent the need to put a recurring task in my schedule each week
+
+|`* * *` |TA |see all my claimable hours in the TSS format |type my claims easily at the end of the semester
+
+|`* * *` |TA |set my hourly rate |get the value of my estimated pay according to the latest rate of the semester
+
+|`* *` |TA |get information on how many hours I've worked so far |keep track of how much work I've done
+
+|`* * *` |user |change between the different pages |view the information on the different pages
+
+|`* * *` |TA |add students to a particular module |
+
+|`* *` |TA |store my students' email ids |retrieve their email ids when I need to contact them
+
+|`* * *` |TA |add multiple modules |keep track of the different modules I am a TA for
+
+|`* * *` |TA |add a tutorial/lab group |keep track of the different tutorial and lab groups I conduct
+
+|`* *` |TA |delete a tutorial group |remove tasks relating to a tutorial group I am no longer the TA of
+
+|`* *` |TA |delete a module |remove tasks relating to a module I am no longer the TA of
+
+|`* * *` |TA |edit student details |
+
+|`* * *` |TA |remove students from a tutorial or lab group |no longer have details of students that are no longer in my tutorial/lab group
+
+|`* * *` |TA |mark a session as done |automatically get filled in my TSS claim section.
+
+|`*` |user |change the default view of the application |
+
 |=======================================================================
+
 
 [appendix]
 == Use Cases
+
 :sectnums!: // Disables section numbering to avoid typing [discrete] tag for headers
 
-(For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
+(For all use cases below, the *System* is the `TA-Tracker` and the *Actor* is the `user`, unless specified otherwise)
+
+[discrete]
+=== Use case: Viewing a page
+
+*MSS*
+
+1.  User requests to view a different page.
+2. TA-Tracker layout changes to show the new page.
+
++
+Use case ends.
+
+*Extensions*
+
+* 1a.  The requested page is invalid.
++
+[none]
+** 1a1.  TA-Tracker shows an error message.
++
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Viewing the help menu
+
+*MSS*
+
+1.  User requests to view the help menu.
+2. TA-Tracker shows the list of commands.
++
+Use case ends.
+
+[discrete]
+=== Use case: Change default view
+
+*MSS*
+
+1.  User requests to change the default view to a specified page.
+2. TA-Tracker changes the default view.
+3. TA-Tracker shows the default view.
++
+Use case ends.
+
+*Extensions*
+
+* 1a. The given page is invalid.
++
+[none]
+** 1a1. TA-Tracker shows an error message.
++
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Change the hourly pay rate
+
+*MSS*
+
+1.  User requests to change the hourly pay rate to a specified amount.
+2. TA-Tracker changes the pay rate.
+3. TA-Tracker shows an edited TSS claims page the total pay adjusted to reflect the new pay rate.
+
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. The given rate is invalid.
++
+[none]
+** 1a1. TA-Tracker shows an error message.
++
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Add student
+
+*MSS*
+
+1.  User requests to add a student.
+2. TA-Tracker adds new student.
+3. TA-Tracker layout changes to show the student list page.
+
++
+Use case ends.
+
+*Extensions*
+
+* 1a. The input required (eg. Matric Number) to add a student is invalid.
++
+[none]
+** 1a1. TA-Tracker shows an error message.
++
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Add module
+
+*MSS*
+
+1.  User requests to add a new module.
+2. TA-Tracker adds a new module.
+3. TA-Tracker layout changes to show the session list page.
+
++
+Use case ends.
+
+*Extensions*
+
+* 1a. The given module code is invalid.
++
+[none]
+** 1a1. TA-Tracker shows an error message.
++
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Add tutorial
+
+*MSS*
+
+1.  User requests to add a new tutorial.
+2. TA-Tracker shows adds a new tutorial linked to the specified module.
+3. TA-Tracker layout changes to show the session list page.
+
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. The given module code is invalid.
++
+[none]
+** 1a1. TA-Tracker shows an error message.
++
+Use case resumes at step 1.
+
+[none]
+* 1a. The given class code is invalid.
++
+[none]
+** 1a1. TA-Tracker shows an error message.
++
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: Edit Student
+
+*MSS*
+
+1. User requests to list students.
+2. TA-Tracker shows a list of students.
+3. User requests to edit a specific student in the list.
+4. TA-Tracker edits the student according to the specified parameters.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+* 3a. The given matric number is invalid.
++
+[none]
+** 3a1. TA-Tracker shows an error message.
++
+Use case resumes at step 3.
+
+* 3a. The given new input for the parameter(s) are invalid.
++
+[none]
+** 3a1. TA-Tracker shows an error message.
++
+Use case resumes at step 3.
+
+[discrete]
+=== Use case: Delete student
+
+*MSS*
+
+1. User requests to show students page.
+2. TA-Tracker shows a list of students categorised by tutorial.
+3. User requests to delete a specific student in the list.
+4. TA-Tracker deletes the student.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+* 3a. The given matric number is invalid.
++
+[none]
+** 3a1. TA-Tracker shows an error message.
++
+Use case resumes at step 3.
+
+[discrete]
+=== Use case: Delete module
+
+*MSS*
+
+1. User requests to show sessions page.
+2. TA-Tracker shows a list of sessions categorised by modules.
+3. User requests to delete a specific module in the list.
+4. TA-Tracker deletes the module and all of the sessions and tutorials in it.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+* 3a. The given module code is invalid.
++
+[none]
+** 3a1. TA-Tracker shows an error message.
++
+Use case resumes at step 3.
+
+[discrete]
+=== Use case: Delete tutorial
+
+*MSS*
+
+1. User requests to show students page.
+2. TA-Tracker shows a list of students categorised by tutorial.
+3. User requests to delete a specific tutorial in the list.
+4. TA-Tracker deletes the tutorial and all of the students in it.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+* 3a. The given class code is invalid.
++
+[none]
+** 3a1. TA-Tracker shows an error message.
++
+Use case resumes at step 3.
+
+[discrete]
+=== Use case: Exit the app
+
+*MSS*
+
+1. User requests to exit the app.
+2. App window closes.
++
+Use case ends.
 
 === Use case: Add session
 
