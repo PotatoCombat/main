@@ -279,13 +279,14 @@ Refer to the guide <<DevOps#, here>>.
 
 *Target user profile*:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing over mouse input
-* is reasonably comfortable using CLI apps
+* targets NUS Computing Teaching Assistants
+* has a need to track and manage all their claimable hours of teaching
+* has a need to keep track of their tasks and reminders (TA-related and/or personal)
+* prefer apps on desktop over other platforms
+* types quickly and prefers it over mouse
+* experiences no discomfort with CLI navigation
 
-*Value proposition*
+*Value proposition*:
 
 * congregates all information regarding claimable hours of teaching in a single location
 * provides desired (TSS) format back to users for convenient viewing

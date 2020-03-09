@@ -38,21 +38,30 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 [[Layout]]
 == Layout
-
-=== Dashboard
-Home page.
+A brief overview of the layout of the TATracker.
 
 === Student View
-This view will show you the list of all your students. It will show you information such as student name, matriculation number, attendance, ratings you give the student(such as for participation), any notes you have on the student and contact details (email and telegram id).
+
+This view will show you the list of all your students. It will show you information such
+as student name, matriculation number, attendance, ratings you give the student
+(such as for participation), any notes you have on the student and contact details
+(email and telegram id).
 
 === Session View
+
 This view will contain the upcoming tasks and statistics.
 
 === TSS View
-This will show you all your claimable hours up till now in the same format as that used in the TSS claim files.
+
+This will show you all your claimable hours up till now in the same format as that
+used in the TSS claim files.
 
 === Automatic Backups
-TATracker data is automatically saved in the hard disk as backup files after any command that changes the data. These automatic backups will preserve all data and settings within the program at the time of use. These backups will also be automatically loaded into the program when it is opened.
+
+TATracker data is automatically saved in the hard disk as backup files after any
+command that changes the data. These automatic backups will preserve all data
+and settings within the program at the time of use. These backups will also be
+automatically loaded into the program when it is opened.
 
 
 [[Usage]]
@@ -96,24 +105,6 @@ TATracker data is automatically saved in the hard disk as backup files after any
 === Viewing help : `help`
 
 Format: `help`
-
-=== Adding a person: `add`
-
-Adds a person to the address book +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
-
-[TIP]
-A person can have any number of tags (including 0)
-
-Examples:
-
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
-
-=== Listing all persons : `list`
-
-Shows a list of all persons in the address book. +
-Format: `list`
 
 === Student Management
 
@@ -179,8 +170,6 @@ Format: `makeup SESSION_UID`
 ****
 * Marks the session with the given unique session identifier as a makeup.
 ****
-
-Examples:
 
 * `makeup 25` +
 Marks the session with the unique session id of 25 as a makeup.
