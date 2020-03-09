@@ -279,13 +279,17 @@ Refer to the guide <<DevOps#, here>>.
 
 *Target user profile*:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing over mouse input
-* is reasonably comfortable using CLI apps
+* targets NUS Computing Teaching Assistants
+* has a need to track and manage all their claimable hours of teaching
+* has a need to keep track of their tasks and reminders (TA-related and/or personal)
+* prefer apps on desktop over other platforms
+* types quickly and prefers it over mouse
+* experiences no discomfort with CLI navigation
 
-*Value proposition*: manage contacts faster than a typical mouse/GUI driven app
+*Value proposition*:
+
+* congregates all information regarding claimable hours of teaching in a single location
+* provides desired (TSS) format back to users for convenient viewing
 
 [appendix]
 == User Stories
@@ -874,20 +878,59 @@ Use case resumes at step 2.
 [appendix]
 == Non Functional Requirements
 
-.  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `11` or above installed.
-.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-_{More to be added}_
+. `**TAT**` should be able to run on any <<mainstream-os, mainstream OS>> as long as it has `Java 11` installed.
+. A user with above average typing speed for <<regular-english-text, regular English text>> (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+. `**TAT**` should be able to run with or without internet connection.
+. `**TAT**` should work for a single user only.
+. `**TAT**` should not require user to install.
+. Features implemented should be testable using manual testing and automated testing.
+. `**TAT**` should support screen resolution of 1920 x 1080 or higher.
+. `**TAT**` should support the English <<locale, locale>> only. Any locale from this link:https://docs.microsoft.com/en-us/cpp/c-runtime-library/language-strings?view=vs-2019[link] that starts with "en" will be supported.
 
 [appendix]
 == Glossary
+[horizontal]
+[[tat]] TAT::
+Stands for "Teaching Assistant Tracker". It is the application this developer guide is for.
+
+[[ta]] TA::
+Stands for "Teaching Assistant", and in our context limited to undergraduate and graduate teaching assistants in the National University of Singapore. A teaching assistant is an individual who assists a teacher with instructional responsibilities such as holding tutorials, labs, consultations, etc.
+
+[[nus]] NUS::
+Stands for "National University of Singapore".
+
+[[module]] Module::
+Refers to one of multiple academic courses in NUS.
+
+[[tutorial]] Tutorial::
+A tutorial is a regular meeting between a tutor and one or several students, for discussion of a subject that is being studied.
+
+[[api]] API::
+Stands for "Application Programming Interface" which simplifies programming by abstracting the underlying implementation and only exposing objects or actions the developer needs.
+
+[[locale]] Locale::
+Stands for a setting on the user's computer that defines the user's language and region.
+
+[[puml]] PlantUML::
+Stands for a software tool that we use to render the diagrams used in this document.
+
+[[nfr]] NFR::
+Stands for "Non-functional Requirement"
 
 [[mainstream-os]] Mainstream OS::
-Windows, Linux, Unix, OS-X
+Stands for commonly used Operating Systems (OS) such as Windows, Linux, Unix, OS-X
 
-[[private-contact-detail]] Private contact detail::
-A contact detail that is not meant to be shared with others
+[[regular-english-text]] Regular English Text::
+Stands for text with ordinary english grammar structures and vocabulary generally used by the public.
+It excludes syntax related to programming and <<system-administration, system administration>>.
+
+[[system-administration]] System Administration::
+Stands for the field of work in which someone manages one or more systems, be they software, hardware, servers or workstations
+with the goal of ensuring the systems are running efficiently and effectively.
+
+[[MSS]] MSS::
+Stands for Main Success Scenario that describes the interaction for a given use case, which assumes that nothing goes wrong.
+
 
 [appendix]
 == Product Survey
